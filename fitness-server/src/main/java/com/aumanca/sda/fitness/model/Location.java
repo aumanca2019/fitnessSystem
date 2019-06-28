@@ -19,8 +19,6 @@ public class Location{
     @Column(name="no_rooms")
     private Integer noRooms;
 
-    public Location() {
-    }
 
     public Long getId() {
         return id;

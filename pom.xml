@@ -11,7 +11,7 @@
 	<groupId>com.aumanca.sda</groupId>
 	<artifactId>fitness</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+    <packaging>pom</packaging>
 	<name>fitness</name>
 	<description>Demo project for Spring Boot</description>
 	<modules>

@@ -17,8 +17,6 @@ public class Exercise {
     @Column(name ="no_places")
     private int noPlaces;
 
-    public Exercise() {
-    }
 
     @ManyToOne
     @JoinColumn(name="location_id")

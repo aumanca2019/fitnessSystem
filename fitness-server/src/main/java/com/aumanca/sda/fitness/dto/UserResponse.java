@@ -1,30 +1,11 @@
-package com.aumanca.sda.fitness.model;
+package com.aumanca.sda.fitness.dto;
 
-import javax.persistence.*;
+public class UserResponse {
 
-@Entity
-public class User {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "user_seq_gen")
-    @SequenceGenerator(name = "user_seq_gen", sequenceName = "user_seq", allocationSize = 1)
-    @Column(name = "user_id")
     private Long id;
-
-    @Column(name = "first_name")
     private String firstName;
-
-    @Column(name = "last_name")
     private String lastName;
-
-    @Column(name = "email")
     private String email;
-
-    @Column(name = "password")
-    private String password;
-
-    public User() {
-    }
 
     public Long getId() {
         return id;
@@ -57,12 +38,6 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
 }
+
+

@@ -19,8 +19,6 @@ public class Trainer {
     @Column(name = "skills")
     private String skills;
 
-    public Trainer() {
-    }
 
     public Long getId() {
         return id;

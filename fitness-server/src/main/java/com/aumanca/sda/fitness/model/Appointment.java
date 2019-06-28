@@ -30,8 +30,6 @@ public class Appointment {
     @JoinColumn(name = "trainer_id")
     private Trainer trainer;
 
-    public Appointment() {
-    }
 
     public Long getId() {
         return id;
