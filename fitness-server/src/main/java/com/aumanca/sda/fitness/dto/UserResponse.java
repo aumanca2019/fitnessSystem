@@ -1,16 +1,17 @@
 package com.aumanca.sda.fitness.dto;
 
 public class UserResponse {
-    private long id;
+
+    private Long id;
     private String firstName;
     private String lastName;
     private String email;
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -18,8 +19,8 @@ public class UserResponse {
         return firstName;
     }
 
-    public void setFirstName(String fisrtName) {
-        this.firstName = fisrtName;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     public String getLastName() {
@@ -38,3 +39,5 @@ public class UserResponse {
         this.email = email;
     }
 }
+
+

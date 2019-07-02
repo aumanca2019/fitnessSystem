@@ -15,7 +15,6 @@ import java.util.List;
 @Transactional //all public methods have transactional context
 public class UserService {
 
-
     private UserRepository userRepository;
     private UserMapper userMapper;
 
@@ -25,25 +24,24 @@ public class UserService {
         this.userMapper = userMapper;
     }
 
-
     public List<User> findAll() {
-
         return userRepository.findAll();
     }
 
     public void save(UserRequest userRequest) {
-
         userRepository.save(userMapper.toEntity(userRequest));
     }
 
-    public void delete(long id) {
+    public void delete(Long id) {
         userRepository.deleteById(id);
     }
 
-    public UserResponse getUserById(long id) throws RuntimeException {
+    public UserResponse getUserById(Long id) throws RuntimeException {
         User user = userRepository.findById(id)
-                .orElseThrow(() -> new UserNotFoundException("Couldn't find a user by id: " + id));
+                .orElseThrow(() -> new UserNotFoundException("Couldn't find a User with id: " + id));
+
         return userMapper.toDto(user);
     }
+
 
 }

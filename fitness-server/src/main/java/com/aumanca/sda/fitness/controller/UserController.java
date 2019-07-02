@@ -20,7 +20,6 @@ public class UserController {
 
     @PostMapping
     public void createUser(@RequestBody UserRequest userRequest) {
-
         userService.save(userRequest);
     }
 
@@ -28,18 +27,14 @@ public class UserController {
     public ResponseEntity<List<User>> getAll(){
         List<User> users = userService.findAll();
 
-        if (users.isEmpty()) {
-            return new ResponseEntity(HttpStatus.NO_CONTENT);
+        if(users.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
-        return new ResponseEntity(users, HttpStatus.OK);
+        return new ResponseEntity<>(users, HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public UserResponse getById(@PathVariable(required = true) long id) {
-
+    public UserResponse getById(@PathVariable(required = true) Long id) {
         return userService.getUserById(id);
     }
-
-
-
 }

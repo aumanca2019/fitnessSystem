@@ -1,5 +1,7 @@
 package com.aumanca.sda.fitness.model;
 
+import org.springframework.data.annotation.Id;
+
 import javax.persistence.*;
 
 @Entity
@@ -8,7 +10,8 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "user_seq_gen")
     @SequenceGenerator(name = "user_seq_gen", sequenceName = "user_seq", allocationSize = 1)
-    private long id;
+    @Column(name = "user_id")
+    private Long id;
 
     @Column(name = "first_name")
     private String firstName;
@@ -25,7 +28,7 @@ public class User {
     public User() {
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
@@ -57,22 +60,11 @@ public class User {
         this.email = email;
     }
 
-    public String getPasswword() {
+    public String getPassword() {
         return password;
     }
 
-    public void setPasswword(String passwword) {
-        this.password = passwword;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", email='" + email + '\'' +
-                ", passwword='" + password + '\'' +
-                '}';
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
