@@ -1,7 +1,6 @@
 package com.aumanca.sda.fitness.controller;
 
 import com.aumanca.sda.fitness.model.Trainer;
-import com.aumanca.sda.fitness.model.User;
 import com.aumanca.sda.fitness.service.TrainerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

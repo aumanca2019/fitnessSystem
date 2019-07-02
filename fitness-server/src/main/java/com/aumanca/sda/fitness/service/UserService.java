@@ -15,32 +15,33 @@ import java.util.List;
 @Transactional //all public methods have transactional context
 public class UserService {
 
-    private UserRepository repository;
+    private UserRepository userRepository;
     private UserMapper userMapper;
 
     @Autowired
-    public UserService(UserRepository repository, UserMapper userMapper) {
-        this.repository = repository;
+    public UserService(UserRepository userRepository, UserMapper userMapper) {
+        this.userRepository = userRepository;
         this.userMapper = userMapper;
     }
 
     public List<User> findAll() {
-        return repository.findAll();
+        return userRepository.findAll();
     }
 
     public void save(UserRequest userRequest) {
-        repository.save(userMapper.toEntity(userRequest));
+        userRepository.save(userMapper.toEntity(userRequest));
     }
 
     public void delete(Long id) {
-        repository.deleteById(id);
+        userRepository.deleteById(id);
     }
 
     public UserResponse getUserById(Long id) throws RuntimeException {
-        User user = repository.findById(id)
+        User user = userRepository.findById(id)
                 .orElseThrow(() -> new UserNotFoundException("Couldn't find a User with id: " + id));
 
         return userMapper.toDto(user);
     }
+
 
 }
