@@ -1,6 +1,5 @@
 package com.aumanca.sda.fitness.model;
 
-import org.springframework.data.annotation.Id;
 
 import javax.persistence.*;
 
@@ -10,7 +9,6 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "user_seq_gen")
     @SequenceGenerator(name = "user_seq_gen", sequenceName = "user_seq", allocationSize = 1)
-    @Column(name = "user_id")
     private Long id;
 
     @Column(name = "first_name")
