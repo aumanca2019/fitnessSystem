@@ -1,14 +1,13 @@
 package com.aumanca.sda.fitness.controller;
 
+import com.aumanca.sda.fitness.dto.UserRequest;
+import com.aumanca.sda.fitness.dto.UserResponse;
 import com.aumanca.sda.fitness.model.User;
 import com.aumanca.sda.fitness.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -17,15 +16,30 @@ import java.util.List;
 public class UserController {
 
     @Autowired
-    public UserService service;
+    public UserService userService;
 
-    @GetMapping("/all")
-    public ResponseEntity<List<User>> getAll(){
-        List<User> users = service.findAll();
+    @PostMapping
+    public void createUser(@RequestBody UserRequest userRequest) {
 
-        if(users.isEmpty()){
-            return new ResponseEntity<List<User>>(HttpStatus.NO_CONTENT);
-        }
-        return new ResponseEntity<List<User>>(users, HttpStatus.OK);
+        userService.save(userRequest);
     }
+
+    @GetMapping
+    public ResponseEntity<List<User>> getAll(){
+        List<User> users = userService.findAll();
+
+        if (users.isEmpty()) {
+            return new ResponseEntity(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity(users, HttpStatus.OK);
+    }
+
+    @GetMapping("/{id}")
+    public UserResponse getById(@PathVariable(required = true) long id) {
+
+        return userService.getUserById(id);
+    }
+
+
+
 }

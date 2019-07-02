@@ -1,5 +1,9 @@
 package com.aumanca.sda.fitness.service;
 
+import com.aumanca.sda.fitness.dto.UserRequest;
+import com.aumanca.sda.fitness.dto.UserResponse;
+import com.aumanca.sda.fitness.mapper.UserMapper;
+import com.aumanca.sda.fitness.model.User;
 import com.aumanca.sda.fitness.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,12 +15,35 @@ import java.util.List;
 @Transactional //all public methods have transactional context
 public class UserService {
 
+
+    private UserRepository userRepository;
+    private UserMapper userMapper;
+
     @Autowired
-    private UserRepository repository;
-
-
-    @Transactional(readOnly = true) // overrides general behavior
-    public List findAll() {
-        return repository.findAll();
+    public UserService(UserRepository userRepository, UserMapper userMapper) {
+        this.userRepository = userRepository;
+        this.userMapper = userMapper;
     }
+
+
+    public List<User> findAll() {
+
+        return userRepository.findAll();
+    }
+
+    public void save(UserRequest userRequest) {
+
+        userRepository.save(userMapper.toEntity(userRequest));
+    }
+
+    public void delete(long id) {
+        userRepository.deleteById(id);
+    }
+
+    public UserResponse getUserById(long id) throws RuntimeException {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new UserNotFoundException("Couldn't find a user by id: " + id));
+        return userMapper.toDto(user);
+    }
+
 }

@@ -9,7 +9,7 @@ public class Exercise {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "ex_seq_gen")
     @SequenceGenerator(name = "ex_seq_gen", sequenceName = "ex_seq", allocationSize = 1)
-    private Long id;
+    private long id;
 
     @Column(name ="category")
     private String category;
@@ -17,18 +17,16 @@ public class Exercise {
     @Column(name ="no_places")
     private int noPlaces;
 
-    public Exercise() {
-    }
 
     @ManyToOne
     @JoinColumn(name="location_id")
     private Location location;
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 

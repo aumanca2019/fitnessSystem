@@ -8,7 +8,7 @@ public class Location{
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "location_seq_gen")
     @SequenceGenerator(name = "location_seq_gen", sequenceName = "location_seq", allocationSize = 1)
-    private Long id;
+    private long id;
 
     @Column(name= "name")
     private String name;
@@ -19,14 +19,12 @@ public class Location{
     @Column(name="no_rooms")
     private Integer noRooms;
 
-    public Location() {
-    }
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 

@@ -9,7 +9,7 @@ public class Appointment {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "app_seq_gen")
     @SequenceGenerator(name = "app_seq_gen", sequenceName = "app_seq", allocationSize = 1)
-    private Long id;
+    private long id;
 
     @Column(name = "start_date")
     @Temporal(TemporalType.DATE)
@@ -30,14 +30,12 @@ public class Appointment {
     @JoinColumn(name = "trainer_id")
     private Trainer trainer;
 
-    public Appointment() {
-    }
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 

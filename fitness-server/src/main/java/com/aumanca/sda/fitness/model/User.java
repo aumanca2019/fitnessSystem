@@ -1,7 +1,5 @@
 package com.aumanca.sda.fitness.model;
 
-import org.springframework.data.annotation.Id;
-
 import javax.persistence.*;
 
 @Entity
@@ -10,22 +8,24 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "user_seq_gen")
     @SequenceGenerator(name = "user_seq_gen", sequenceName = "user_seq", allocationSize = 1)
-    @Column(name = "user_id")
-    private Long id;
+    private long id;
 
     @Column(name = "first_name")
     private String firstName;
 
     @Column(name = "last_name")
-    private String lasteName;
+    private String lastName;
 
     @Column(name = "email")
     private String email;
 
     @Column(name = "password")
-    private String passwword;
+    private String password;
 
-    public Long getId() {
+    public User() {
+    }
+
+    public long getId() {
         return id;
     }
 
@@ -41,12 +41,12 @@ public class User {
         this.firstName = firstName;
     }
 
-    public String getLasteName() {
-        return lasteName;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setLasteName(String lasteName) {
-        this.lasteName = lasteName;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getEmail() {
@@ -58,10 +58,21 @@ public class User {
     }
 
     public String getPasswword() {
-        return passwword;
+        return password;
     }
 
     public void setPasswword(String passwword) {
-        this.passwword = passwword;
+        this.password = passwword;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", passwword='" + password + '\'' +
+                '}';
     }
 }

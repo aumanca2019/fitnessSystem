@@ -1,24 +1,11 @@
-package com.aumanca.sda.fitness.model;
+package com.aumanca.sda.fitness.dto;
 
-import javax.persistence.*;
+public class TrainerResponse {
 
-@Entity
-public class Trainer {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "trainer_seq_gen")
-    @SequenceGenerator(name = "trainer_seq_gen", sequenceName = "trainer_seq", allocationSize = 1)
     private long id;
-
-    @Column(name = "first_name")
     private String firstName;
-
-    @Column(name = "last_name")
     private String lastName;
-
-    @Column(name = "skills")
     private String skills;
-
 
     public long getId() {
         return id;
@@ -52,3 +39,4 @@ public class Trainer {
         this.skills = skills;
     }
 }
+
