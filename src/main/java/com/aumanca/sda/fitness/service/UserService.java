@@ -32,14 +32,13 @@ public class UserService {
         userRepository.save(userMapper.toEntity(userRequest));
     }
 
-    public void delete(Long id) {
+    public void delete (Long id) {
         userRepository.deleteById(id);
     }
 
     public UserResponse getUserById(Long id) throws RuntimeException {
         User user = userRepository.findById(id)
                 .orElseThrow(() -> new UserNotFoundException("Couldn't find a User with id: " + id));
-
         return userMapper.toDto(user);
     }
 

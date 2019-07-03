@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<div>
+    <form action="/register" th:action="@{api/user}" th:object="${userRequest}" method="post" enctype="utf8">
+        <div>
+            <label th:text="firstName">first</label>
+            <input th:field="*{firstName}"/>
+        </div>
+        <div>
+            <label th:text="lastName">last</label>
+            <input th:field="*{lastName}"/>
+        </div>
+        <div>
+            <label th:text="email">email</label>
+            <input type="email" th:field="*{email}"/>
+        </div>
+        <div>
+            <label th:text="password">password</label>
+            <input type="password" th:field="*{password}"/>
+        </div>
+<!--        <div>-->
+<!--            <label th:text="#{label.user.confirmPass}">confirm</label>-->
+<!--            <input type="password" th:field="*{matchingPassword}"/>-->
+<!--        </div>-->
+        <button type="submit" th:text="submit">submit</button>
+    </form>
+</div>

@@ -7,11 +7,13 @@ import com.aumanca.sda.fitness.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+
 
 import java.util.List;
 
-@RestController
+@Controller
 @RequestMapping("api/users")
 public class UserController {
 
@@ -19,10 +21,10 @@ public class UserController {
     public UserService userService;
 
     @PostMapping
-    public void createUser(@RequestBody UserRequest userRequest) {
+    public String createUser(@ModelAttribute UserRequest userRequest) {
         userService.save(userRequest);
+        return "index";
     }
-
     @GetMapping
     public ResponseEntity<List<User>> getAll(){
         List<User> users = userService.findAll();
@@ -32,9 +34,14 @@ public class UserController {
         }
         return new ResponseEntity<>(users, HttpStatus.OK);
     }
-
     @GetMapping("/{id}")
     public UserResponse getById(@PathVariable(required = true) Long id) {
         return userService.getUserById(id);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteById(@PathVariable("id") final Long id) {
+        userService.delete(id);
+
     }
 }
