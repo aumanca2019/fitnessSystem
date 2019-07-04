@@ -2,6 +2,7 @@ package com.aumanca.sda.fitness.service;
 
 import com.aumanca.sda.fitness.dto.UserRequest;
 import com.aumanca.sda.fitness.dto.UserResponse;
+import com.aumanca.sda.fitness.exceptions.NotFoundException;
 import com.aumanca.sda.fitness.mapper.UserMapper;
 import com.aumanca.sda.fitness.model.User;
 import com.aumanca.sda.fitness.repository.UserRepository;
@@ -38,7 +39,8 @@ public class UserService {
 
     public UserResponse getUserById(Long id) throws RuntimeException {
         User user = userRepository.findById(id)
-                .orElseThrow(() -> new UserNotFoundException("Couldn't find a User with id: " + id));
+                .orElseThrow(() -> new NotFoundException(NotFoundException.ErrorCode.USER_NOT_FOUND,"Couldn't find " +
+                        "user"));
         return userMapper.toDto(user);
     }
 
