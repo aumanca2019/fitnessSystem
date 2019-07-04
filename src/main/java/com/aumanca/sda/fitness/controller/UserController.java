@@ -10,37 +10,25 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+
 import java.util.List;
 
 @Controller
-@RequestMapping("api/user")
+@RequestMapping("/register")
 public class UserController {
 
-    @Autowired
-    public UserService userService;
+
+    private UserService userService;
+
+    public UserController(UserService userService) {
+        this.userService = userService;
+
+    }
 
     @PostMapping
     public String createUser(@ModelAttribute UserRequest userRequest) {
         userService.save(userRequest);
-        return "index";
-    }
-    @GetMapping
-    public ResponseEntity<List<User>> getAll(){
-        List<User> users = userService.findAll();
-
-        if(users.isEmpty()){
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
-        return new ResponseEntity<>(users, HttpStatus.OK);
-    }
-    @GetMapping("/{id}")
-    public UserResponse getById(@PathVariable(required = true) Long id) {
-        return userService.getUserById(id);
+        return  "index";
     }
 
-    @DeleteMapping("/{id}")
-    public void deleteById(@PathVariable("id") final Long id) {
-        userService.delete(id);
-
-    }
 }
