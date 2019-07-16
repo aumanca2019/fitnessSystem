@@ -27,7 +27,7 @@ public class IndexController {
     @RequestMapping("register")
     public String getRegister(Model model){
         model.addAttribute("userRequest",new UserRequest());
-        return "register";
+        return "login";
     }
    //  public String createNewUser(@Valid UserRequest userRequest){
 
