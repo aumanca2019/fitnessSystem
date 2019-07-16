@@ -12,7 +12,7 @@ public class UserMapper {
         User user = new User();
         user.setFirstName(dto.getFirstName());
         user.setLastName(dto.getLastName());
-        user.setEmail(dto.getEmail());
+        user.setUsername(dto.getUsername());
         user.setPassword(dto.getPassword());
         return user;
     }
@@ -22,7 +22,7 @@ public class UserMapper {
         userResponse.setId(user.getId());
         userResponse.setFirstName(user.getFirstName());
         userResponse.setLastName(user.getLastName());
-        userResponse.setEmail(user.getEmail());
+        userResponse.setEmail(user.getUsername());
         return userResponse;
     }
 }

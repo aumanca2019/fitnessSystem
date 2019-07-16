@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-@Service
+@Service("userDetailsService")
 @Transactional //all public methods have transactional context
 public class UserService {
 
@@ -33,16 +33,15 @@ public class UserService {
         userRepository.save(userMapper.toEntity(userRequest));
     }
 
-    public void delete (Long id) {
+    public void delete(Long id) {
         userRepository.deleteById(id);
     }
 
     public UserResponse getUserById(Long id) throws RuntimeException {
         User user = userRepository.findById(id)
-                .orElseThrow(() -> new NotFoundException(NotFoundException.ErrorCode.USER_NOT_FOUND,"Couldn't find " +
+                .orElseThrow(() -> new NotFoundException(NotFoundException.ErrorCode.USER_NOT_FOUND, "Couldn't find " +
                         "user"));
         return userMapper.toDto(user);
     }
-
 
 }

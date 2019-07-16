@@ -7,8 +7,11 @@
     <meta content="width=device-width, initial-scale=1" name="viewport">
     <link rel="stylesheet" th:href="@{/css/main.css}"
           href="../static/css/main.css"/>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}"
+          href="../static/css/bootstrap.css"/>
 </head>
 <body>
+<div th:replace="header :: header"></div>
 <div class="limiter">
     <div class="container-login100">
         <div class="wrap-login100">
@@ -17,14 +20,15 @@
                      th:src="@{/images/img-01.png}">
             </div>
 
-            <form class="login100-form validate-form">
+            <form th:action="@{/login}" th:object="${loginForm}" method="post"
+                  class="login100-form validate-form">
 					<span class="login100-form-title">
 						Member Login
 					</span>
 
                 <div class="wrap-input100 validate-input"
-                     data-validate="Valid email is required: ex@abc.xyz">
-                    <input class="input100" name="email" placeholder="Email"
+                     data-validate="Valid username is required: ex@abc.xyz">
+                    <input class="input100" name="username" placeholder="Email"
                            type="text">
                     <span class="focus-input100"></span>
                     <span class="symbol-input100">
@@ -67,7 +71,8 @@
             </form>
         </div>
     </div>
-</div>
 
+</div>
+<div th:replace="footer :: footer"></div>
 </body>
 </html>

@@ -21,7 +21,7 @@ public class IndexController {
 
     @RequestMapping("/")
     public String getIndex() {
-        return "index";
+        return "home";
     }
 
     @RequestMapping("register")

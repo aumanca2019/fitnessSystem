@@ -28,7 +28,7 @@ public class UserController {
     @PostMapping
     public String createUser(@ModelAttribute UserRequest userRequest) {
         userService.save(userRequest);
-        return  "index";
+        return  "home";
     }
 
 }
