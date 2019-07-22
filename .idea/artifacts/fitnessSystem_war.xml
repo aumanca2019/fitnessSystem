@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="fitnessSystem:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>fitnessSystem</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="fitness-server-2.1.5.RELEASE.war">
+      <element id="artifact" artifact-name="fitnessSystem:war exploded" />
+    </root>
+  </artifact>
+</component>
