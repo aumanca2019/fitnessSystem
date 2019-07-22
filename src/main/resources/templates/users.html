@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Fitness Today</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link th:replace="fragments :: style">
+</head>
+<body>
+<nav th:replace="fragments :: nav"></nav>
+<div th:replace="fragments :: flash"></div>
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">User</th>
+                <th scope="col">Role</th>
+                <th scope="col">Delete</th>
+                <th scope="col">Make User</th>
+                <th scope="col">Make Trainer</th>
+                <th scope="col">Make Admin</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="user : ${users}">
+                <th scope="row" th:text="${user.id}"></th>
+                <td th:text="${user.username}"></td>
+                <td th:text="${user.role.name}"></td>
+                <td><form method="post"
+                          th:action="@{/admin/users/{id}(id=${user.id})}"
+                          class="inline todo-item">
+                    <button type="submit" class="btn btn-danger" onClick="return confirm('sure?')">
+                        Delete</button>
+                </form></td>
+                <td><form method="post"
+                          th:action="@{/admin/users/{id}/1(id=${user.id})}"
+                          class="inline todo-item">
+                    <button type="submit" class="btn btn-info"
+                            onClick="return confirm('sure?')">User
+                    </button>
+                </form></td>
+                <td><form method="post"
+                          th:action="@{/admin/users/{id}/2(id=${user.id})}"
+                          class="inline todo-item">
+                    <button type="submit" class="btn btn-info"
+                            onClick="return confirm('sure?')">Trainer
+                    </button>
+                </form></td>
+                <td><form method="post"
+                          th:action="@{/admin/users/{id}/3(id=${user.id})}"
+                          class="inline todo-item">
+                    <button type="submit" class="btn btn-dark"
+                            onClick="return confirm('sure?')">Admin
+                    </button>
+                </form></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<footer th:replace="fragments :: footer"></footer>
+<div th:replace="fragments :: scripts"></div>
+</body>
+</html>

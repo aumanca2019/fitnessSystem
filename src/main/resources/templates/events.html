@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Fitness Today</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link th:replace="fragments :: style">
+</head>
+<body>
+<nav th:replace="fragments :: nav"></nav>
+<div th:replace="fragments :: flash"></div>
+<section class="py-5 bg-white">
+    <div class="container">
+        <div class="row justify-content-center text-center">
+            <div class="col col-md-8">
+                <h1 class="text-dark">Our Amazing Classes</h1>
+                <p class="text-h3 lead text-muted">Vivamus sagittis lacus vel
+                    augue laoreet rutrum faucibus dolor auctor. Duis mollis, est
+                    non commodo luctus.</p>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="py-5" style="background-color: #f7f7f7;">
+    <div class="container">
+        <div class="row">
+            <div th:each="event : ${events}"
+                 class="card border-0 col-sm-12 col-md-6 col-lg-4"
+                 style="padding:
+                 10px">
+                <img class="card-img-top"
+                     src="http://lorempixel.com/400/400"
+                     alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${event.name}"></h5>
+                    <p class="card-text">Some quick example text to build on
+                        the card title and make up the bulk of the card's
+                        content.</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"
+                        th:text="'Trainer: ' + ${event.trainer.name}"></li>
+                    <li class="list-group-item"
+                        th:text="'Date: ' + ${#dates.format(event.takesPlace, 'dd-MM-yyyy')} "></li>
+                    <li class="list-group-item"
+                        th:text="'Duration: ' + ${event.duration} + 'hours'"></li>
+                </ul>
+                <div class="card-body">
+                    <span class="offset-3"></span>
+                    <button type="button" class="btn btn-success col-md-6" th:if="${#authorization.expression('isAuthenticated()')}">
+                        Enroll!
+                    </button>
+                    <a class="btn btn-outline-success my-2 my-sm-0 col-md-6"
+                       th:if="${!#authorization.expression('isAuthenticated()')}"
+                       href="/signup">Join now!
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div th:replace="fragments ::footer"></div>
+<div th:replace="fragments :: scripts"></div>
+</body>
+</html>

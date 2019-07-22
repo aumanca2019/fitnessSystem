@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<div th:fragment="head" lang="en">
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link th:fragment="style" rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
+
+
+</div>
+
+<nav th:fragment="nav" class="navbar navbar-expand-sm navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="/">Fitness Today</a>
+        <!--    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">-->
+        <!--        <span class="navbar-toggler-icon"></span>-->
+        <!--    </button>-->
+        <!--    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">-->
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+            <li class="nav-item"><a class="nav-link"
+                                    href="/">Home</a>
+            </li>
+            <li class="nav-item"><a class="nav-link"
+                                    href="/about">About</a>
+            </li>
+            <li class="nav-item"><a class="nav-link"
+                                    href="/events">Classes</a>
+            </li>
+            <li class="nav-item"><a class="nav-link"
+                                    href="/trainers">Trainers</a>
+            </li>
+            <li class="nav-item"><a class="nav-link"
+                                    href="/locations">Locations</a>
+            </li>
+            <li class="nav-item"><a class="nav-link"
+                                    href="/contact">Contact</a>
+            </li>
+            <li class="nav-item dropdown" sec:authorize="hasRole('ROLE_ADMIN')">
+                <a class="nav-link dropdown-toggle" href="/events"
+                   role="button" data-toggle="dropdown" aria-haspopup="true"
+                   aria-expanded="false">
+                    Admin
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="/admin/users">Users</a>
+                </div>
+            </li>
+        </ul>
+        <form th:if="${#authorization.expression('isAuthenticated()')}"
+              class="form-inline my-2 my-lg-0" th:action="@{/logout}"
+              method="post">
+            <button class="btn btn-outline-success my-1 my-sm-0 btn-sm"
+                    type="submit">Log out
+            </button>
+        </form>
+        <form th:if="${!#authorization.expression('isAuthenticated()')}"
+              class="form-inline my-2 my-lg-0">
+            <a class="btn btn-outline-success my-1 my-sm-0 btn-sm"
+               href="/login">Log in
+            </a>
+        </form>
+    </div>
+</nav>
+
+<div th:fragment="flash" th:if="${flash != null}" class="container">
+    <div class="message">
+        <i class="right material-icons" data-close="">close</i>
+        <div th:classappend="${#strings.toLowerCase(flash.status)}"
+             th:text="${flash.message}" class="flash"></div>
+    </div>
+</div>
+<div th:fragment="footer" >
+
+<footer  class="page-footer font-small text-white bg-dark">
+    <div class="container">
+    <div class="footer-copyright text-center py-3">© 2018 Copyright:
+        <a href="/"> Aksoft</a>
+    </div>
+    </div>
+</footer>
+</div>
+<div th:fragment="scripts">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+    <script type="text/javascript" th:src="@{/assets/js/app.js}"></script>
+
+</div>
+
+</html>

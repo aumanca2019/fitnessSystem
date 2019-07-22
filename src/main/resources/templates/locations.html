@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Fitness Today</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon"
+          th:href="@{/assets/images/apple-touch-icon.png}">
+    <link th:replace="fragments :: style">
+    <title>Locations</title>
+    <style>
+        .map-container-5{
+            overflow:hidden;
+            padding-bottom:56.25%;
+            position:relative;
+            height:0;
+        }
+        .map-container-5 iframe{
+            left:0;
+            top:0;
+            height:100%;
+            width:100%;
+            position:absolute;
+        }
+    </style>
+</head>
+<body>
+<nav th:replace="fragments :: nav"></nav>
+<!---->
+
+<section class="py-5 bg-white">
+    <div class="container">
+        <div class="row justify-content-center text-center">
+            <div class="col col-md-8">
+                <h1 class="text-dark">Our Locations</h1>
+                <p class="text-h3 lead text-muted">Choose where you want to
+                    participate in our classes!
+                    .</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="row">
+
+    <!--Grid column-->
+    <div class="col-md-6 mb-4">
+
+        <!--Card-->
+        <div class="card card-cascade narrower">
+
+            <!--Card image-->
+            <div class="view view-cascade gradient-card-header peach-gradient">
+                <h5 class="mb-0">Custom map</h5>
+            </div>
+            <!--/Card image-->
+
+            <!--Card content-->
+            <div class="card-body card-body-cascade text-center">
+
+                <!--Google map-->
+                <div id="map-container-google-0"
+                     class="z-depth-1-half map-container-5" style="height: 300px">
+                    <iframe src="https://maps.google.com/maps?q=Madryt&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0"
+                            style="border:0" allowfullscreen></iframe>
+                </div>
+
+
+            </div>
+            <!--/.Card content-->
+
+        </div>
+        <!--/.Card-->
+
+    </div>
+    <!--Grid column-->
+
+    <!--Grid column-->
+    <div class="col-md-6 mb-4">
+
+        <!--Card-->
+        <div class="card card-cascade narrower">
+
+            <!--Card image-->
+            <div class="view view-cascade gradient-card-header peach-gradient">
+                <h5 class="mb-0">Custom map</h5>
+            </div>
+            <!--/Card image-->
+
+            <!--Card content-->
+            <div class="card-body card-body-cascade text-center">
+
+                <!--Google map-->
+                <div id="map-container-google-1"
+                     class="z-depth-1-half map-container-5" style="height: 300px">
+                    <iframe src="https://maps.google.com/maps?q=Madryt&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0"
+                            style="border:0" allowfullscreen></iframe>
+                </div>
+
+
+            </div>
+            <!--/.Card content-->
+
+        </div>
+        <!--/.Card-->
+
+    </div>
+    <!--Grid column-->
+
+</div>
+<!--Grid row-->
+<!---->
+<div th:replace="fragments ::footer"></div>
+<div th:replace="fragments :: scripts"></div>
+</body>
+</html>
